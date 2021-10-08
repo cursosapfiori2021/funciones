@@ -3,7 +3,7 @@ sap.ui.define([
         "sap/ui/model/json/JSONModel",
         "sap/m/MessageToast"
 ],
-	/**
+	/**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
 	 * @param {typeof sap.ui.core.mvc.Controller} Controller
 	 */
 	function (Controller , JSONModel , MessageToast ) {
@@ -17,9 +17,8 @@ sap.ui.define([
                 usd: "USD",
                 eur: "EUR"
             });
-            this.getView().setModel(oViewModel, "currency");
+            this.getView().setModel(oViewModel, "moneda");
 
-       
             },
             
         onPressFind: function (evt) {

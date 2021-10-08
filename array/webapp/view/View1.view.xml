@@ -39,12 +39,14 @@
         <items>
             <ObjectListItem title="{products>UnitsInStock} - {products>ProductName}"
                             number="{ parts : [ {path : 'products>UnitPrice'},
-                                                {path : 'currency>/usd'}],
-                                      type: 'sap.ui.model.type.Currency'
-                                    }"
-                        
-                            >
-             
+                                                {path : 'moneda>/usd'}],
+                                      type: 'sap.ui.model.type.Currency',
+                                   
+                        formatOptions: {
+                                          showMeasure : false
+                                      }}"  
+                          
+             numberState="{= ${products>UnitsInStock} > 50 ? 'Success' : 'Error'}">  
             </ObjectListItem>
         </items>
     </List>
