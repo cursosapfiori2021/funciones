@@ -3,9 +3,7 @@ sap.ui.define([
         "sap/ui/model/json/JSONModel",
         "sap/m/MessageToast"
 ],
-	/**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
-	 * @param {typeof sap.ui.core.mvc.Controller} Controller
-	 */
+
 	function (Controller , JSONModel , MessageToast ) {
 		"use strict";
 
@@ -19,11 +17,15 @@ sap.ui.define([
             });
             this.getView().setModel(oViewModel, "moneda");
 
+            var dataModel = this.getOwnerComponent().getModel("products");
+            this.getView().setModel(dataModel, "products");
+            
+
             },
             
         onPressFind: function (evt) {
              var oPrecio = this.getView().byId("importe").getValue();
-             var Producto =  sap.ui.getCore().getModel( "products").getData();
+             var Producto =  this.getView().getModel(  "products").getData();
              var FindProducto = Producto.Products.find( producto => producto.UnitPrice ==  oPrecio);
              MessageToast.show(FindProducto.ProductName);
 
@@ -36,7 +38,7 @@ sap.ui.define([
 
         onPressFilter: function (evt) {
              var oPrecio = this.getView().byId("importe").getValue();
-             var Producto =  sap.ui.getCore().getModel( "products").getData();
+             var Producto =  this.getView().getModel(  "products").getData();
              var FindProducto = Producto.Products.filter( producto => producto.UnitPrice ==  oPrecio);
 
             },
@@ -44,12 +46,12 @@ sap.ui.define([
 
             onPressFOREACH: function (evt) {
              var oPrecio = this.getView().byId("importe").getValue();
-             var Producto =  sap.ui.getCore().getModel( "products").getData();
+             var Producto =  this.getView().getModel(  "products").getData();
              Producto.Products.sort();
 
                 if (Producto.Products instanceof Array) {
-                    Producto.Products.forEach(producto => console.log(producto) );
-                   
+                  //Ingresar la logica aca
+ 
                 } else {
                       MessageToast.show("No es array");    
                 }  
@@ -58,7 +60,7 @@ sap.ui.define([
 
            onPressMAP: function (evt) {
              var oPrecio = this.getView().byId("importe").getValue();
-             var Producto =  sap.ui.getCore().getModel( "products").getData();
+             var Producto =  this.getView().getModel(  "products").getData();
  
                 if (Producto.Products instanceof Array) {
                     Producto.Products.map(producto => console.log(producto)   );
@@ -70,7 +72,7 @@ sap.ui.define([
 
             onPressReduce: function (evt) {
              var oPrecio = this.getView().byId("importe").getValue();
-             var Producto =  sap.ui.getCore().getModel( "products").getData();
+             var Producto =  this.getView().getModel(  "products").getData();
              var producto2= [];
 
                 if (Producto.Products instanceof Array) {
@@ -105,20 +107,20 @@ sap.ui.define([
     }  ,
 
       onPressPop: function (evt) {
-            var Producto =  sap.ui.getCore().getModel( "products").getData();
+            var Producto =  this.getView().getModel(  "products").getData();
             Producto.Products.pop()
     }  ,
 
     
       onPressShift: function (evt) {
-              var Producto =  sap.ui.getCore().getModel( "products").getData();
+              var Producto =  this.getView().getModel(  "products").getData();
               Producto.Products.shift()
     }  ,
 
 
           onPressUnshift: function (evt) {
  
-             var Producto =  sap.ui.getCore().getModel( "products").getData();
+             var Producto =  this.getView().getModel(  "products").getData();
               var producto = {   "ProductID": 6,
                                     "ProductName": "Chai",
                                     "SupplierID": 1,
